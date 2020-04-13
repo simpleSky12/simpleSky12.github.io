@@ -64,10 +64,60 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Typora解决图片上传" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/13/Typora%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" class="article-date">
+  <time datetime="2020-04-13T08:30:33.740Z" itemprop="datePublished">2020-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/13/Typora%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/">Typora解决图片上传</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Typora解决图片上传"><a href="#Typora解决图片上传" class="headerlink" title="Typora解决图片上传"></a>Typora解决图片上传</h1><p>首先开通七牛云</p>
+<p>七牛云开通是免费送10G，存储空间的，不过需要自己的服务器结合使用，服务器也需要通过备案</p>
+<h2 id="Typora设置"><a href="#Typora设置" class="headerlink" title="Typora设置"></a>Typora设置</h2><p>打开 Typora 的偏好设置</p>
+<p><img src="http://qiniu.simplesky12.cn/img/image-20200413161850777.png" alt="image-20200413161850777"></p>
+<p>选择 PicGo-core，然后下载插件，其他几个我没有试成功，放弃了</p>
+<h2 id="PicGo-Core配置"><a href="#PicGo-Core配置" class="headerlink" title="PicGo-Core配置"></a>PicGo-Core配置</h2><p><a href="https://picgo.github.io/PicGo-Core-Doc/zh/guide/config.html#picbed-github" target="_blank" rel="noopener">PicGo-Core配置文档</a></p>
+<p>还是打开偏好设置中的 图像，然后 点击打开配置文件</p>
+<p><img src="http://qiniu.simplesky12.cn/img/image-20200413162248259.png" alt="image-20200413162248259"></p>
+<h3 id="七牛云的详细配置"><a href="#七牛云的详细配置" class="headerlink" title="七牛云的详细配置"></a>七牛云的详细配置</h3><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"picBed"</span>: &#123;</span><br><span class="line">    <span class="attr">"uploader"</span>: <span class="string">"qiniu"</span>,</span><br><span class="line">    <span class="attr">"qiniu"</span>: &#123;</span><br><span class="line">      <span class="attr">"accessKey"</span>: <span class="string">"XXXXXXX"</span>,</span><br><span class="line">      <span class="attr">"secretKey"</span>: <span class="string">"XXXX"</span>,</span><br><span class="line">      <span class="attr">"bucket"</span>: <span class="string">"存储空间名称"</span>,</span><br><span class="line">      <span class="attr">"url"</span>: <span class="string">"存储空间使用的域名"</span>,</span><br><span class="line">      <span class="attr">"area"</span>: <span class="string">"z2表示华南"</span>,</span><br><span class="line">      <span class="attr">"options"</span>: <span class="string">""</span>,</span><br><span class="line">      <span class="attr">"path"</span>: <span class="string">"img/ 存放的路径位置"</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"picgoPlugins"</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="accessKey和secretKey-如何查找"><a href="#accessKey和secretKey-如何查找" class="headerlink" title="accessKey和secretKey 如何查找"></a>accessKey和secretKey 如何查找</h3><p>进入七牛云的个人中心的密钥管理中查找</p>
+<p><img src="http://qiniu.simplesky12.cn/img/image-20200413162655557.png" alt="image-20200413162655557"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/13/Typora%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" data-id="ck8y7vzf5000060u90uqbfhzu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hexo+github自建博客" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/13/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time datetime="2020-04-13T07:39:30.715Z" itemprop="datePublished">2020-04-13</time>
+  <time datetime="2020-04-13T07:58:48.303Z" itemprop="datePublished">2020-04-13</time>
 </a>
     
   </div>
@@ -127,10 +177,10 @@
 <td align="left"></td>
 </tr>
 </tbody></table>
-<h2 id="github-仓库设置"><a href="#github-仓库设置" class="headerlink" title="github 仓库设置"></a>github 仓库设置</h2><p><img src="hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2.assets/image-20200413145357170.png" alt="image-20200413145357170"></p>
+<h2 id="github-仓库设置"><a href="#github-仓库设置" class="headerlink" title="github 仓库设置"></a>github 仓库设置</h2><p><img src="http://qiniu.simplesky12.cn/img/image-20200413145357170.png" alt="image-20200413145357170"></p>
 <p>新建的 github 仓库名称，要 以.github.io 结尾</p>
 <p>创建仓库后，复制 ssh 链接</p>
-<p><img src="hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2.assets/image-20200413145557566.png" alt="image-20200413145557566"></p>
+<p><img src="http://qiniu.simplesky12.cn/img/image-20200413145557566.png" alt="image-20200413145557566"></p>
 <p>将ssh链接 配置到 delopy下的 repo 中</p>
 <h3 id="创建密钥对"><a href="#创建密钥对" class="headerlink" title="创建密钥对"></a>创建密钥对</h3><p>因为使用了ssh，所以需要用到密钥，创建密钥对</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"905781330@qq.com"</span></span><br></pre></td></tr></table></figure>
@@ -144,10 +194,18 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
 
 <p>产生静态文件目录 public</p>
-<p><img src="hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2.assets/image-20200413151105032.png" alt="image-20200413151105032"></p>
+<p><img src="http://qiniu.simplesky12.cn/img/image-20200413151105032.png" alt="image-20200413151105032"></p>
+<p>执行命令，部署静态文件到 github 上</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
 
-<p>部署静态文件到 github 上</p>
+
+
+<h2 id="解决图片无法显示"><a href="#解决图片无法显示" class="headerlink" title="解决图片无法显示"></a>解决图片无法显示</h2><p>安装新的插件 <code>hexo-asset-image</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm istall hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+
+
+<p>配置<code>_config.yml</code>里面的<code>post_asset_folder:false</code>这个选项设置为<code>true</code>。</p>
 
       
     </div>
@@ -240,6 +298,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/13/Typora%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/">Typora解决图片上传</a>
+          </li>
         
           <li>
             <a href="/2020/04/13/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2/">hexo+github自建博客</a>
