@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    hexo+github自建博客 |  Hexo
+    小米商城vue部署 |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -36,7 +36,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-hexo+github自建博客" class="article article-type-post" itemscope
+  <article id="post-小米商城vue部署" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -44,7 +44,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  hexo+github自建博客
+  小米商城vue部署
 </h1>
  
 
@@ -53,8 +53,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/13/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time datetime="2020-04-13T11:41:32.557Z" itemprop="datePublished">2020-04-13</time>
+      <a href="/2020/04/13/%E5%B0%8F%E7%B1%B3%E5%95%86%E5%9F%8Evue%E9%83%A8%E7%BD%B2/" class="article-date">
+  <time datetime="2020-04-13T11:41:32.542Z" itemprop="datePublished">2020-04-13</time>
 </a>
       
       
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">397</span>
+            <span class="post-count">501</span>
         </span>
     </span>
 
@@ -73,7 +73,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -98,80 +98,45 @@
       
 
       
-      <h1 id="hexo-github自建博客"><a href="#hexo-github自建博客" class="headerlink" title="hexo+github自建博客"></a>hexo+github自建博客</h1><h2 id="安装基本环境"><a href="#安装基本环境" class="headerlink" title="安装基本环境"></a>安装基本环境</h2><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo中文官网</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm add hexo-cli -g  //全局安装 hexo</span><br><span class="line"></span><br><span class="line">hexo init blog  //新建 blog 文件夹</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"></span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">hexo serve</span><br></pre></td></tr></table></figure>
+      <h1 id="小米商城vue部署"><a href="#小米商城vue部署" class="headerlink" title="小米商城vue部署"></a>小米商城vue部署</h1><h2 id="nginx服务配置"><a href="#nginx服务配置" class="headerlink" title="nginx服务配置"></a>nginx服务配置</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装完成后可以查看安装位置</span></span><br><span class="line"><span class="built_in">which</span> nginx</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="检查nginx配置"><a href="#检查nginx配置" class="headerlink" title="检查nginx配置"></a>检查nginx配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nginx -t</span><br><span class="line"><span class="comment"># 这个命令可以检查到 nginx 配置文件的所在位置</span></span><br></pre></td></tr></table></figure>
+<p>重点关注 nginx.conf 文件中的 server配置</p>
+<p>server 表示我们的服务器<br>server 下面的server_name 则是配置的域名<br>server 中的 location 下的 root 则表示 网站文件所在的目录</p>
+<h3 id="nginx-的相关操作命令"><a href="#nginx-的相关操作命令" class="headerlink" title="nginx 的相关操作命令"></a>nginx 的相关操作命令</h3><p>nginx -s stop 停止nginx服务<br>nginx  开始nginx服务<br>nginx -s reload  重启nginx服务</p>
+<h3 id="nginx-中主要server的配置"><a href="#nginx-中主要server的配置" class="headerlink" title="nginx 中主要server的配置"></a>nginx 中主要server的配置</h3><p>可以将 需要变动的 server配置单独提出来，写入一个新的文件中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在nginx 的目录下新建一个 vhost 目录</span></span><br><span class="line">mkdir vhost</span><br><span class="line"><span class="comment"># 进入vhost 目录 新建一个 mi_mall.conf 文件，存放配置</span></span><br><span class="line"><span class="built_in">cd</span> vhost/</span><br><span class="line">vim mi_mall.conf</span><br></pre></td></tr></table></figure>
+<p>mi_mall.conf 文件中的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name localhost;</span><br><span class="line">        root /workspace/mimall;</span><br><span class="line">        index index.html index.htm login.html;</span><br><span class="line"></span><br><span class="line">        location ^~/api/pay&#123;</span><br><span class="line">          proxy_pass http://116.63.142.208:5000/pay;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ^~/api/ &#123;</span><br><span class="line">          proxy_pass http://116.63.142.208:8000/;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span><br><span class="line">        &#123;</span><br><span class="line">          root /workspace/mimall;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        location ~ .*\.(js|html|css)?$</span><br><span class="line">        &#123;</span><br><span class="line">          root /workspace/mimall;</span><br><span class="line">          expires 30d;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>保存退出后,进入 nginx的 nginx.conf 文件中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/<span class="built_in">local</span>/nginx/conf/</span><br><span class="line">vim nginx.conf</span><br></pre></td></tr></table></figure>
+
+
+<p>添加一行配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include /etc/<span class="built_in">local</span>/nginx/vhost/*.conf;</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="http://qiniu.simplesky12.cn/img/1585108896352-55b68e59-d621-4641-8a15-e409ba565ce0.png" alt="image.png"></p>
+<p>重载 nginx 服务配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="部署所需环境配置"><a href="#部署所需环境配置" class="headerlink" title="部署所需环境配置"></a>部署所需环境配置</h2><p>安装 <code>hexo-deployer-git</code></p>
-<p><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git的github地址</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
 
-<p>修改配置文件 <strong>_config.yml</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">&lt;repository</span> <span class="string">url&gt;</span> <span class="comment">#https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">[branch]</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">[message]</span></span><br><span class="line">  <span class="attr">token:</span> <span class="string">''</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">[git</span> <span class="string">user]</span></span><br><span class="line">  <span class="attr">email:</span> <span class="string">[git</span> <span class="string">email]</span></span><br><span class="line">  <span class="attr">extend_dirs:</span> <span class="string">[extend</span> <span class="string">directory]</span></span><br><span class="line">  <span class="attr">ignore_hidden:</span> <span class="literal">false</span> <span class="comment"># default is true</span></span><br><span class="line">  <span class="attr">ignore_pattern:</span> <span class="string">regexp</span>  <span class="comment"># whatever file that matches the regexp will be ignored when deploying</span></span><br></pre></td></tr></table></figure>
+<h2 id="node配置"><a href="#node配置" class="headerlink" title="node配置"></a>node配置</h2><h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://npm.taobao.org/mirrors/node/v12.14.0/node-v12.14.0-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
+<p>解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -xvf node-v12.14.0-linux-x64.tar.xz</span><br></pre></td></tr></table></figure>
+<p>-x 表示解压<br>-vf  在解压的过程中会显示解压的文件与路径<br>-zx 表示解压 .tar.gz 格式的压缩文件<br>解压缩文件： tar -zxvf 压缩文件名.tar.gz tar   -xvf 压缩文件名.tar</p>
+<h3 id="环境变量的配置"><a href="#环境变量的配置" class="headerlink" title="环境变量的配置"></a>环境变量的配置</h3><p>配置 npm与node的 path环境变量路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span>  <span class="comment">#查看系统的环境变量有哪些</span></span><br></pre></td></tr></table></figure>
 
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-<th align="left">默认</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>repo</code></td>
-<td align="left">库（Repository）地址</td>
-<td align="left">常用ssh 地址，可以免密上传</td>
-</tr>
-<tr>
-<td align="left"><code>branch</code></td>
-<td align="left">分支名称</td>
-<td align="left"><code>gh-pages</code> (GitHub) <code>coding-pages</code> (Coding.net) <code>master</code> (others)</td>
-</tr>
-<tr>
-<td align="left">name</td>
-<td align="left">github 用户名</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">email</td>
-<td align="left">github 的登陆邮箱</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h2 id="github-仓库设置"><a href="#github-仓库设置" class="headerlink" title="github 仓库设置"></a>github 仓库设置</h2><p><img src="http://qiniu.simplesky12.cn/img/image-20200413145357170.png" alt="image-20200413145357170"></p>
-<p>新建的 github 仓库名称，要 以.github.io 结尾</p>
-<p>创建仓库后，复制 ssh 链接</p>
-<p><img src="http://qiniu.simplesky12.cn/img/image-20200413145557566.png" alt="image-20200413145557566"></p>
-<p>将ssh链接 配置到 delopy下的 repo 中</p>
-<h3 id="创建密钥对"><a href="#创建密钥对" class="headerlink" title="创建密钥对"></a>创建密钥对</h3><p>因为使用了ssh，所以需要用到密钥，创建密钥对</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"905781330@qq.com"</span></span><br></pre></td></tr></table></figure>
-
-<p>密钥生成后 将密钥配置到 github中，这样本地就可以使用ssh免密上传文件到 github中</p>
-<p>配置完成后的文件内容</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:simpleSky12/simpleSky12.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">simpleSky12</span></span><br><span class="line">  <span class="attr">email:</span> <span class="number">905781330</span><span class="string">@qq.com</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://qiniu.simplesky12.cn/img/1585107210778-bec136bc-35f5-4d49-8557-b5b4f5323152.png" alt="image.png"><br>创建node 和 npm 的软连接指向到 /usr/local/bin下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/<span class="built_in">local</span>/node-v12/bin/node /usr/<span class="built_in">local</span>/bin/node</span><br><span class="line">ln -s /usr/<span class="built_in">local</span>/node-v12/bin/npm /usr/<span class="built_in">local</span>/bin/npm</span><br><span class="line"><span class="comment"># 回到 /root路径下</span></span><br><span class="line"><span class="built_in">cd</span></span><br><span class="line"><span class="built_in">source</span> .bash_profile //让配置生效</span><br></pre></td></tr></table></figure>
 
 
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>产生静态文件目录 public</p>
-<p><img src="http://qiniu.simplesky12.cn/img/image-20200413151105032.png" alt="image-20200413151105032"></p>
-<p>执行命令，部署静态文件到 github 上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="解决图片无法显示"><a href="#解决图片无法显示" class="headerlink" title="解决图片无法显示"></a>解决图片无法显示</h2><p>安装新的插件 <code>hexo-asset-image</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm istall hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-
-
-<p>配置<code>_config.yml</code>里面的<code>post_asset_folder:false</code>这个选项设置为<code>true</code>。</p>
-<h2 id="博客主题的使用"><a href="#博客主题的使用" class="headerlink" title="博客主题的使用"></a>博客主题的使用</h2><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo的所有主题地址</a></p>
-<p><img src="http://qiniu.simplesky12.cn/img/image-20200413181451724.png" alt="image-20200413181451724"></p>
-<p>我喜欢的一款主题 <a href="https://shen-yu.gitee.io/" target="_blank" rel="noopener">岛</a></p>
-<p><a href="https://shen-yu.gitee.io/2019/ayer/" target="_blank" rel="noopener">使用说明文档</a></p>
 
       
       <!-- reward -->
@@ -240,7 +205,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/13/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/13/%E5%B0%8F%E7%B1%B3%E5%95%86%E5%9F%8Evue%E9%83%A8%E7%BD%B2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -256,10 +221,19 @@
   
   <nav class="article-nav">
     
+      <a href="/2020/04/13/hello-world/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Hello World
+          
+        </div>
+      </a>
     
-      <a href="/2020/04/13/Typora%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" class="article-nav-link">
+    
+      <a href="/2020/04/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Typora解决图片上传</div>
+        <div class="article-nav-title">移动端适配方案</div>
       </a>
     
   </nav>

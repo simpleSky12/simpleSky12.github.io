@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    hexo+github自建博客 |  Hexo
+    移动端适配方案 |  Hexo
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -36,7 +36,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-hexo+github自建博客" class="article article-type-post" itemscope
+  <article id="post-移动端适配方案" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -44,7 +44,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  hexo+github自建博客
+  移动端适配方案
 </h1>
  
 
@@ -53,8 +53,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/04/13/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time datetime="2020-04-13T11:41:32.557Z" itemprop="datePublished">2020-04-13</time>
+      <a href="/2020/04/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/" class="article-date">
+  <time datetime="2020-04-13T11:41:32.537Z" itemprop="datePublished">2020-04-13</time>
 </a>
       
       
@@ -64,7 +64,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">397</span>
+            <span class="post-count">349</span>
         </span>
     </span>
 
@@ -98,80 +98,22 @@
       
 
       
-      <h1 id="hexo-github自建博客"><a href="#hexo-github自建博客" class="headerlink" title="hexo+github自建博客"></a>hexo+github自建博客</h1><h2 id="安装基本环境"><a href="#安装基本环境" class="headerlink" title="安装基本环境"></a>安装基本环境</h2><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">hexo中文官网</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">npm add hexo-cli -g  //全局安装 hexo</span><br><span class="line"></span><br><span class="line">hexo init blog  //新建 blog 文件夹</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line"></span><br><span class="line">npm install</span><br><span class="line"></span><br><span class="line">hexo serve</span><br></pre></td></tr></table></figure>
+      <h1 id="移动端适配方案"><a href="#移动端适配方案" class="headerlink" title="移动端适配方案"></a>移动端适配方案</h1><p>定义相同的文字大小，但在不同的设备上应该展示不同的像素数</p>
+<p><strong>rem</strong>: 相对于 *<em>html *</em>标签 元素 *<em>fontSize *</em>大小的单位</p>
+<p>定义函数把像素px转化为 rem</p>
+<h2 id="fontSize-计算规则"><a href="#fontSize-计算规则" class="headerlink" title="fontSize 计算规则"></a>fontSize 计算规则</h2><p>根据<strong>屏幕宽度  **动态的</strong> **定义 根元素 fontSize 大小</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义最大的 fontSize</span></span><br><span class="line"><span class="keyword">const</span> MAX_FONT_SIZE = <span class="number">42</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 监听 html 文档被解析完成的事件</span></span><br><span class="line"><span class="built_in">document</span>.addEventListener(<span class="string">'DOMContentLoaded'</span>, () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 获取 HTML 标签</span></span><br><span class="line">  <span class="keyword">const</span> html = <span class="built_in">document</span>.querySelector(<span class="string">'html'</span>)</span><br><span class="line">  <span class="comment">// 获取根元素 fontSize 标准，屏幕宽度除以10</span></span><br><span class="line">  <span class="keyword">let</span> fontSize = <span class="built_in">window</span>.innerWidth / <span class="number">10</span></span><br><span class="line">  <span class="comment">// 获取到的 fontSize 不允许超过我们设置的最大值</span></span><br><span class="line">  fontSize = fontSize &gt; MAX_FONT_SIZE ? MAX_FONT_SIZE : fontSize</span><br><span class="line">  <span class="comment">// 定义根元素 html 的 fontsize 大小，即 rem</span></span><br><span class="line">  html.style.fontSize = fontSize + <span class="string">'px'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>将该 js文件引入到 vue项目的入口 js文件中 <strong>main.js</strong><br>**<br><strong><img src="http://qiniu.simplesky12.cn/img/1585812674227-3a2d04d8-5c13-479c-aa5c-a2e07ae89a24.png" alt="image.png"></strong></p>
+<h2 id="转化-px-为-rem的值"><a href="#转化-px-为-rem的值" class="headerlink" title="转化 px 为 rem的值"></a>转化 px 为 rem的值</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义预计的根元素大小</span></span><br><span class="line">$rootFontSize: <span class="number">375</span>/<span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义像素转化为 rem 的函数</span></span><br><span class="line">@<span class="function"><span class="keyword">function</span> <span class="title">px2rem</span>(<span class="params">$px</span>)</span>&#123;</span><br><span class="line">  @<span class="keyword">return</span> $px/$rootFontSize + rem;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将 该scss 文件引入到** app.vue** 中<br><img src="http://qiniu.simplesky12.cn/img/1585812548860-02f36e86-74f3-4338-a954-c859a0f20d9d.png" alt="image.png"></p>
+<p>后期其他vue页面中如果使用到了 px2rem() 则需要重新引入一下。</p>
+<h2 id="配置-public-文件夹中-index-html"><a href="#配置-public-文件夹中-index-html" class="headerlink" title="配置 public 文件夹中 index.html"></a>配置 public 文件夹中 index.html</h2><p>我们需要在 HTML 文件的 head 标签中 加入 一个新的 meta 标签，内容如下</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,initial-scale=1.0,maximum=1.0,user-scalable=no"</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
-
-<h2 id="部署所需环境配置"><a href="#部署所需环境配置" class="headerlink" title="部署所需环境配置"></a>部署所需环境配置</h2><p>安装 <code>hexo-deployer-git</code></p>
-<p><a href="https://github.com/hexojs/hexo-deployer-git" target="_blank" rel="noopener">hexo-deployer-git的github地址</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<p>修改配置文件 <strong>_config.yml</strong></p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">&lt;repository</span> <span class="string">url&gt;</span> <span class="comment">#https://bitbucket.org/JohnSmith/johnsmith.bitbucket.io</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">[branch]</span></span><br><span class="line">  <span class="attr">message:</span> <span class="string">[message]</span></span><br><span class="line">  <span class="attr">token:</span> <span class="string">''</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">[git</span> <span class="string">user]</span></span><br><span class="line">  <span class="attr">email:</span> <span class="string">[git</span> <span class="string">email]</span></span><br><span class="line">  <span class="attr">extend_dirs:</span> <span class="string">[extend</span> <span class="string">directory]</span></span><br><span class="line">  <span class="attr">ignore_hidden:</span> <span class="literal">false</span> <span class="comment"># default is true</span></span><br><span class="line">  <span class="attr">ignore_pattern:</span> <span class="string">regexp</span>  <span class="comment"># whatever file that matches the regexp will be ignored when deploying</span></span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th align="left">参数</th>
-<th align="left">描述</th>
-<th align="left">默认</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>repo</code></td>
-<td align="left">库（Repository）地址</td>
-<td align="left">常用ssh 地址，可以免密上传</td>
-</tr>
-<tr>
-<td align="left"><code>branch</code></td>
-<td align="left">分支名称</td>
-<td align="left"><code>gh-pages</code> (GitHub) <code>coding-pages</code> (Coding.net) <code>master</code> (others)</td>
-</tr>
-<tr>
-<td align="left">name</td>
-<td align="left">github 用户名</td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">email</td>
-<td align="left">github 的登陆邮箱</td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h2 id="github-仓库设置"><a href="#github-仓库设置" class="headerlink" title="github 仓库设置"></a>github 仓库设置</h2><p><img src="http://qiniu.simplesky12.cn/img/image-20200413145357170.png" alt="image-20200413145357170"></p>
-<p>新建的 github 仓库名称，要 以.github.io 结尾</p>
-<p>创建仓库后，复制 ssh 链接</p>
-<p><img src="http://qiniu.simplesky12.cn/img/image-20200413145557566.png" alt="image-20200413145557566"></p>
-<p>将ssh链接 配置到 delopy下的 repo 中</p>
-<h3 id="创建密钥对"><a href="#创建密钥对" class="headerlink" title="创建密钥对"></a>创建密钥对</h3><p>因为使用了ssh，所以需要用到密钥，创建密钥对</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -C <span class="string">"905781330@qq.com"</span></span><br></pre></td></tr></table></figure>
-
-<p>密钥生成后 将密钥配置到 github中，这样本地就可以使用ssh免密上传文件到 github中</p>
-<p>配置完成后的文件内容</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">git@github.com:simpleSky12/simpleSky12.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">simpleSky12</span></span><br><span class="line">  <span class="attr">email:</span> <span class="number">905781330</span><span class="string">@qq.com</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure>
-
-<p>产生静态文件目录 public</p>
-<p><img src="http://qiniu.simplesky12.cn/img/image-20200413151105032.png" alt="image-20200413151105032"></p>
-<p>执行命令，部署静态文件到 github 上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="解决图片无法显示"><a href="#解决图片无法显示" class="headerlink" title="解决图片无法显示"></a>解决图片无法显示</h2><p>安装新的插件 <code>hexo-asset-image</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm istall hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-
-
-<p>配置<code>_config.yml</code>里面的<code>post_asset_folder:false</code>这个选项设置为<code>true</code>。</p>
-<h2 id="博客主题的使用"><a href="#博客主题的使用" class="headerlink" title="博客主题的使用"></a>博客主题的使用</h2><p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo的所有主题地址</a></p>
-<p><img src="http://qiniu.simplesky12.cn/img/image-20200413181451724.png" alt="image-20200413181451724"></p>
-<p>我喜欢的一款主题 <a href="https://shen-yu.gitee.io/" target="_blank" rel="noopener">岛</a></p>
-<p><a href="https://shen-yu.gitee.io/2019/ayer/" target="_blank" rel="noopener">使用说明文档</a></p>
+<p><img src="http://qiniu.simplesky12.cn/img/1585812841912-35650cc1-0ce2-4bfc-bfc5-db3b5ec7c503.png" alt="image.png"></p>
+<h2 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h2><p>以 Home.vue 文件举例，演示 px2rem()  的用法<br><img src="http://qiniu.simplesky12.cn/img/1585812980853-1e76a136-acdf-4cd7-9d5f-052fa87d19a5.png" alt="image.png"></p>
 
       
       <!-- reward -->
@@ -240,7 +182,7 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/13/hexo+github%E8%87%AA%E5%BB%BA%E5%8D%9A%E5%AE%A2/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://yoursite.com/2020/04/13/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -256,11 +198,15 @@
   
   <nav class="article-nav">
     
-    
-      <a href="/2020/04/13/Typora%E8%A7%A3%E5%86%B3%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" class="article-nav-link">
-        <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">Typora解决图片上传</div>
+      <a href="/2020/04/13/%E5%B0%8F%E7%B1%B3%E5%95%86%E5%9F%8Evue%E9%83%A8%E7%BD%B2/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            小米商城vue部署
+          
+        </div>
       </a>
+    
     
   </nav>
 
