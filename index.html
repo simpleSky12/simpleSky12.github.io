@@ -76,6 +76,133 @@
     
     
     
+    <article id="post-gulp构建工具" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/04/15/gulp%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/"
+    >gulp构建工具</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/04/15/gulp%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" class="article-date">
+  <time datetime="2020-04-15T03:12:52.238Z" itemprop="datePublished">2020-04-15</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <h1 id="gulp构建工具"><a href="#gulp构建工具" class="headerlink" title="gulp构建工具"></a>gulp构建工具</h1><h2 id="gulp-flow"><a href="#gulp-flow" class="headerlink" title="gulp flow"></a>gulp flow</h2><p>定义任务 》输入文件 》处理文件 》输出</p>
+<p>处理文件中又细分很多其他的处理方式</p>
+<p>适合小项目，快速的形成自动化编译</p>
+<p>首先初始化项目 <strong>npm init -y</strong><br>**<br>安装gulp 插件 <strong>cnpm i gulp -D</strong><br>**<br>在package.json 中 定义打包命令<br><img src="http://qiniu.simplesky12.cn/img/1585480530585-15374560-cd3a-4e9c-aa51-e5e8edb1f74a.png" alt="image.png"></p>
+<p>安装完成后，可以使用<strong>npx gulp -v</strong>查看gulp的版本号</p>
+<p>这样我们就可以通过 <strong>npm run build</strong> 来执行gulp的打包命令</p>
+<h2 id="gulp基本配置"><a href="#gulp基本配置" class="headerlink" title="gulp基本配置"></a>gulp基本配置</h2><h3 id="新建gulpfile-js-文件"><a href="#新建gulpfile-js-文件" class="headerlink" title="新建gulpfile.js 文件"></a>新建gulpfile.js 文件</h3><p><strong>gulpfile.js</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">// 压缩，混淆  js</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">js</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">'this is js script task'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 对 scss 编译，输出 css 文件</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">css</span></span>() &#123;</span><br><span class="line">    console.log(<span class="string">'this is styles script task'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 监听文件的变化</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">watcher</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 清除 dist 目录中的内容</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">clean</span></span>() &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.scripts = js;</span><br><span class="line">exports.styles = css;</span><br><span class="line">exports.default = <span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">    console.log(<span class="string">'hello  gulp'</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>执行命令 <strong>npx gulp –tasks</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2020/png/656731/1585482862269-534f140b-396f-4bb3-ac26-cce852c5201a.png" alt="image.png"></strong></p>
+<p>执行命令 <strong>npx gulp scripts</strong><br><img src="http://qiniu.simplesky12.cn/img/1585482950912-a730cf47-b595-4537-adc4-cfcd37461fb6.png" alt="image.png"></p>
+<h2 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h2><p><a href="https://gulpjs.com/plugins/" target="_blank" rel="noopener">gulp 的 plugin 地址</a></p>
+<h3 id="常用插件"><a href="#常用插件" class="headerlink" title="常用插件"></a>常用插件</h3><p><strong>gulp-uglify *<em>js代码混淆<br>*</em>gulp-rename</strong> 重命名<br><strong>del</strong> 清空输出目录 dist 的内容<br><strong>gulp-autoprefixer *<em>样式的预处理, 处理浏览器的前缀问题，解决样式的兼容性<br>*</em>gulp-sass</strong>  可以使用scss文件编写样式<br><strong>gulp-loader</strong>  使我们在引用插件时更加的方便</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> plugins = <span class="built_in">require</span>(<span class="string">'gulp-load-plugins'</span>)();</span><br><span class="line"></span><br><span class="line">plugins.jshint = <span class="built_in">require</span>(<span class="string">'gulp-jshint'</span>);</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i gulp-sass gulp-autoprefixer gulp-load-plugins gulp-uglify del -D</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="gulp打包配置"><a href="#gulp打包配置" class="headerlink" title="gulp打包配置"></a>gulp打包配置</h2><h3 id="js配置"><a href="#js配置" class="headerlink" title="js配置"></a>js配置</h3><p>在gulpfile.js 中引入插件使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">* src 表示入口文件所在位置</span><br><span class="line">* dest 表示输出的文件目录</span><br><span class="line">* series 表示执行方式 是串联</span><br><span class="line">* watch 表示开启监听</span><br><span class="line">* pipe 表示下一个执行环节</span><br><span class="line">* */</span><br><span class="line">const &#123;src, dest, series, watch&#125; = require(<span class="string">'gulp'</span>);</span><br><span class="line"></span><br><span class="line">const plugins = require(<span class="string">'gulp-load-plugins'</span>)();</span><br><span class="line"></span><br><span class="line">// 压缩，混淆  js</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">js</span></span>() &#123;</span><br><span class="line">    src(<span class="string">'js/*.js'</span>)</span><br><span class="line">        .pipe(plugins.uglify())</span><br><span class="line">        .pipe(dest(<span class="string">'./dist/js'</span>))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.scripts = js;</span><br></pre></td></tr></table></figure>
+
+
+<p>执行 <strong>npx gulp scripts</strong> 命令，来只执行 <strong>js()</strong>  方法</p>
+<h3 id="处理tasks-not-complete警告"><a href="#处理tasks-not-complete警告" class="headerlink" title="处理tasks not complete警告"></a>处理tasks not complete警告</h3><p><img src="http://qiniu.simplesky12.cn/img/1585530512354-49fb81cb-1b37-4038-af6f-97bf3fd8116d.png" alt="image.png"><br>上面的红色警告是表示我们没有结束** js()** 的gulp flow 工作流 ，需要在js方法中传入 回调函数 <strong>cd()</strong>，然后在 最后一个<strong>pipe</strong>方法后 调用 cb(), 这里 cb 是callback的简称</p>
+<p><img src="http://qiniu.simplesky12.cn/img/1585530712615-92a7ed61-34af-472e-a5ef-2d50d42c3514.png" alt="image.png"></p>
+<p>再次执行 命令 *<em>npx gulp scripts, *</em>就没有刚刚的红色报错了。<br><img src="http://qiniu.simplesky12.cn/img/1585530807505-129d96a9-f697-4c03-8797-a6647ad6c417.png" alt="image.png"></p>
+<h3 id="clean配置"><a href="#clean配置" class="headerlink" title="clean配置"></a>clean配置</h3><p>clean 的功能主要是每次编译前，清除dist目录</p>
+<p><strong>gulpfile.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> del = <span class="built_in">require</span>(<span class="string">'del'</span>);</span><br><span class="line"><span class="comment">// 清除 dist 目录中的内容</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">clean</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">    del(<span class="string">'./dist'</span>);</span><br><span class="line">    cb();</span><br><span class="line">&#125;</span><br><span class="line">exports.clean = clean;</span><br></pre></td></tr></table></figure>
+
+
+<p>执行命令 <strong>npx gulp clean</strong><br>根目录下的*<em>dist *</em>目录就会被删除</p>
+<h3 id="CSS配置"><a href="#CSS配置" class="headerlink" title="CSS配置"></a>CSS配置</h3><p><strong>gulpfile.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123;src, dest, series, watch&#125; = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">const</span> plugins = <span class="built_in">require</span>(<span class="string">'gulp-load-plugins'</span>)();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">css</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">    src(<span class="string">'scss/*.scss'</span>)</span><br><span class="line">        <span class="comment">// 压缩输出的 样式文件的 代码</span></span><br><span class="line">        .pipe(plugins.sass(&#123;<span class="attr">outputStyle</span>: <span class="string">'compressed'</span>&#125;))</span><br><span class="line">        .pipe(plugins.autoprefixer(&#123;</span><br><span class="line">            casecade: <span class="literal">false</span>,</span><br><span class="line">            remove: <span class="literal">false</span></span><br><span class="line">        &#125;))</span><br><span class="line">        .pipe(dest(<span class="string">'./dist/css'</span>))</span><br><span class="line">    cb();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.styles = css;</span><br></pre></td></tr></table></figure>
+
+
+<p>css打包时还需要配置一下 <strong>package.json</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"browserslist"</span>: [</span><br><span class="line">    <span class="string">"last 2 Version"</span>,</span><br><span class="line">    <span class="string">"&gt; 2%"</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>执行命令 <strong>npx gulp styles</strong><br><strong><img src="https://cdn.nlark.com/yuque/0/2020/png/656731/1585559075724-db0c85c0-f2b2-4611-b0a7-6ba7fd9983fc.png" alt="image.png"></strong><br>**</p>
+<h3 id="watch配置"><a href="#watch配置" class="headerlink" title="watch配置"></a>watch配置</h3><p><strong>gulpfile.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">watcher</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    watch(<span class="string">'js/*.js'</span>, js);</span><br><span class="line">    watch(<span class="string">'css/*.scss'</span>, css);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">exports.default = series([</span><br><span class="line">    clean,</span><br><span class="line">    js,</span><br><span class="line">    css,</span><br><span class="line">    watcher</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+
+
+<p>这次使用命令** npm run build**  来执行 *<em>exports.default *</em>命令</p>
+<h2 id="热编译，浏览器自动刷新"><a href="#热编译，浏览器自动刷新" class="headerlink" title="热编译，浏览器自动刷新"></a>热编译，浏览器自动刷新</h2><p>首先安装依赖  browser-sync</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm i browser-sync -D</span><br></pre></td></tr></table></figure>
+
+
+<p>在<strong>gulpfile.js</strong> 中引入并初始化** browser-sync**</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> browserSync = <span class="built_in">require</span>(<span class="string">'browser-sync'</span>).create();</span><br><span class="line"></span><br><span class="line"><span class="comment">// server 任务</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">server</span>(<span class="params">cb</span>) </span>&#123;</span><br><span class="line">    browserSync.init(&#123;</span><br><span class="line">        server: &#123;</span><br><span class="line">            baseDir: <span class="string">'./'</span>  <span class="comment">// 定义根目录位置，不需要编写 ./dist </span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    cb();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="http://qiniu.simplesky12.cn/img/1585556733539-284e5656-72ff-4414-9282-e490f20bd44a.png" alt="image.png"></p>
+<h3 id="热更新"><a href="#热更新" class="headerlink" title="热更新"></a>热更新</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> reload = browserSync.reload;</span><br></pre></td></tr></table></figure>
+
+
+<p><img src="http://qiniu.simplesky12.cn/img/1585556568582-355b7290-fafa-47d6-a01f-116b00ca69a6.png" alt="image.png"></p>
+<p><img src="http://qiniu.simplesky12.cn/img/1585559148483-21b44d83-62bb-4793-bca0-18781f69939a.png" alt="image.png"></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
     <article id="post-hexo+github自建博客" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
